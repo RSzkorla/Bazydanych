@@ -1,3 +1,32 @@
+select * from Employees
+select LastName, FirstName from Employees - rzut pionowy
+select LastName, FirstName from Employees where LastName='Peacock' -rzut poziomy + pionowy
+select LastName, FirstName from Employees where LastName='Peacock' and FirstName = 'Margaret'
+select LastName, FirstName from Employees where LastName='Peacock' or LastName = 'Chicken'
+select LastName, FirstName from Employees where LastName='Peacock' or LastName = 'Chicken' or LastName = 'Fuller'
+select LastName, FirstName from Employees where LastName in ('Peacock','Chicken','Fuller')
+select * from Products where UnitPrice > 20
+select * from Products where CategoryID in (8,9,10)
+select ProductName,UnitPrice from Products where UnitPrice > 20
+select ProductName, CategoryID from Products where CategoryID in (8,9,10)
+select ProductName,UnitPrice from Products where UnitPrice > 20 order by UnitPrice
+select ProductName,UnitPrice from Products where UnitPrice > 20 order by CategoryID , UnitPrice
+select ProductName,UnitPrice from Products where UnitPrice > 20 order by CategoryID desc, UnitPrice asc
+
+
+SELECT ProductName FROM Products
+SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice BETWEEN 20 AND 25
+SELECT ProductName, UnitPrice, CategoryID FROM Products WHERE(UnitPrice <10) AND CategoryID IN (7,8)
+SELECT FirstName, LastName, DATEDIFF(YY,HireDate,GETDATE()) AS 'Sta¿' FROM Employees WHERE DATEDIFF(YY,HireDate,GETDATE()) >20
+SELECT FirstName, LastName FROM Employees WHERE LastName LIKE 'K%'
+SELECT ProductName, CategoryName FROM Products, Categories  WHERE Products.CategoryID = Categories.CategoryID ORDER BY ProductName
+SELECT CompanyName, OrderDate FROM Orders,Customers WhERE Orders.CustomerID=Customers.CustomerID ORDER by CompanyName
+SELECT LastName, CustomerID From Employees, Orders WHERE Employees.EmployeeID = Orders.EmployeeID ORDER BY LastName
+SELECT LastName FROM Employees, Orders Where OrderDate='1996-10-21' AND Employees.EmployeeID=Orders.EmployeeID ORDER BY LastName
+SELECT LastName, CompanyName From Employees, Orders, Customers WHERE Employees.EmployeeID = Orders.EmployeeID AND Orders.CustomerID=Customers.CustomerID ORDER BY LastName 
+SELECT p.LastName as robol, sz.LastName as szef From Employees as p, Employees as sz Where p.ReportsTo= sz.EmployeeID 
+
+
 SELECT ProductName, CategoryName, CompanyName 
 FROM Products, Categories, Suppliers 
 WHERE Products.CategoryID = Categories.CategoryID 
