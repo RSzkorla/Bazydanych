@@ -43,3 +43,10 @@ FROM Products JOIN Categories
 	ON Products.CategoryID = Categories.CategoryID JOIN Suppliers 
 	ON Suppliers.SupplierID = Products.SupplierID
 ORDER BY CompanyName, CategoryName, ProductName 
+
+INSERT INTO Categories (CategoryName) VALUES ('European')
+
+SELECT ProductName, CategoryName FROM Products FULL OUTER JOIN Categories ON Products.CategoryID = Categories.CategoryID
+
+SELECT p.LastName as robol, sz.LastName as szef 
+From Employees as p LEFT JOIN Employees as sz ON p.ReportsTo= sz.EmployeeID 
