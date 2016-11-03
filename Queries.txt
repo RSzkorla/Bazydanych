@@ -5,3 +5,5 @@ WHERE Products.CategoryID = Categories.CategoryID
 ORDER BY CompanyName, CategoryName, ProductName 
 
 SELECT Customers.City FROM Customers, Orders WHERE Orders.CustomerID = Customers.CustomerID
+
+SELECT City FROM Customers JOIN Orders ON Customers.CustomerID = Orders.CustomerID
