@@ -1,0 +1,7 @@
+SELECT ProductName, CategoryName, CompanyName 
+FROM Products, Categories, Suppliers 
+WHERE Products.CategoryID = Categories.CategoryID 
+	AND Suppliers.SupplierID = Products.SupplierID
+ORDER BY CompanyName, CategoryName, ProductName 
+
+SELECT Customers.City FROM Customers, Orders WHERE Orders.CustomerID = Customers.CustomerID
