@@ -1,3 +1,4 @@
+//LAB1
 select * from Employees
 select LastName, FirstName from Employees - rzut pionowy
 select LastName, FirstName from Employees where LastName='Peacock' -rzut poziomy + pionowy
@@ -13,7 +14,7 @@ select ProductName,UnitPrice from Products where UnitPrice > 20 order by UnitPri
 select ProductName,UnitPrice from Products where UnitPrice > 20 order by CategoryID , UnitPrice
 select ProductName,UnitPrice from Products where UnitPrice > 20 order by CategoryID desc, UnitPrice asc
 
-
+//LAB2
 SELECT ProductName FROM Products
 SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice BETWEEN 20 AND 25
 SELECT ProductName, UnitPrice, CategoryID FROM Products WHERE(UnitPrice <10) AND CategoryID IN (7,8)
@@ -26,7 +27,7 @@ SELECT LastName FROM Employees, Orders Where OrderDate='1996-10-21' AND Employee
 SELECT LastName, CompanyName From Employees, Orders, Customers WHERE Employees.EmployeeID = Orders.EmployeeID AND Orders.CustomerID=Customers.CustomerID ORDER BY LastName 
 SELECT p.LastName as robol, sz.LastName as szef From Employees as p, Employees as sz Where p.ReportsTo= sz.EmployeeID 
 
-
+//LAB3
 SELECT ProductName, CategoryName, CompanyName 
 FROM Products, Categories, Suppliers 
 WHERE Products.CategoryID = Categories.CategoryID 
@@ -36,3 +37,9 @@ ORDER BY CompanyName, CategoryName, ProductName
 SELECT Customers.City FROM Customers, Orders WHERE Orders.CustomerID = Customers.CustomerID
 
 SELECT City FROM Customers JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+
+SELECT ProductName, CategoryName, CompanyName 
+FROM Products JOIN Categories 
+	ON Products.CategoryID = Categories.CategoryID JOIN Suppliers 
+	ON Suppliers.SupplierID = Products.SupplierID
+ORDER BY CompanyName, CategoryName, ProductName 
