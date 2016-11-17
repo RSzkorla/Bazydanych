@@ -88,3 +88,12 @@ FROM Products
 FULL JOIN [Order Details]
 ON Products.ProductID = [Order Details].ProductID
 WHERE OrderID IS NULL
+
+CREATE TABLE DaysOfWeek(
+	DayOfWeek varchar(20) PRIMARY KEY NOT NULL)
+	
+SELECT Dzien 
+FROM DaysOfWeek
+FULL JOIN Orders 
+ON DATENAME(DW,OrderDate) = Dzien
+WHERE DATENAME(DW,OrderDate) IS NULL
