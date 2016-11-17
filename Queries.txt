@@ -63,3 +63,9 @@ FROM Employees
 LEFT JOIN Orders
 ON Employees.EmployeeID = Orders.EmployeeID
 ORDER BY LastName
+
+SELECT ProductID, CompanyName
+FROM Products 
+RIGHT JOIN Suppliers
+ON Products.SupplierID = Suppliers.SupplierID
+ORDER BY CompanyName
