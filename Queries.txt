@@ -50,3 +50,16 @@ SELECT ProductName, CategoryName FROM Products FULL OUTER JOIN Categories ON Pro
 
 SELECT p.LastName as robol, sz.LastName as szef 
 From Employees as p LEFT JOIN Employees as sz ON p.ReportsTo= sz.EmployeeID 
+
+// LAB4
+
+SELECT Orders.OrderID, ProductName, Quantity, OrderDate
+FROM Products, Orders,[Order Details]
+WHERE Products.ProductID = [Order Details].ProductID
+	AND Orders.OrderID = [Order Details].OrderID
+	
+SELECT LastName, OrderID
+FROM Employees 
+LEFT JOIN Orders
+ON Employees.EmployeeID = Orders.EmployeeID
+ORDER BY LastName
