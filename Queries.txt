@@ -78,6 +78,13 @@ WHERE OrderID IS NULL
 ORDER BY LastName
 
 SELECT p.LastName as robol, sz.LastName as szef 
-From Employees as p LEFT JOIN Employees as sz 
+From Employees as p 
+LEFT JOIN Employees as sz 
 ON p.ReportsTo= sz.EmployeeID 
 WHERE p.ReportsTo IS NULL
+
+SELECT ProductName
+FROM Products
+FULL JOIN [Order Details]
+ON Products.ProductID = [Order Details].ProductID
+WHERE OrderID IS NULL
