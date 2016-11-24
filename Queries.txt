@@ -154,4 +154,8 @@ WHERE UnitPrice =
 (
 	SELECT MAX(UnitPrice)
 	FROM Products
-)	
+)
+
+SELECT TOP 1 ProductName
+FROM Products
+ORDER BY UnitPrice DESC	
