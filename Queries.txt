@@ -146,4 +146,12 @@ WHERE CustomerID NOT IN
 )
 
 SELECT MAX(UnitPrice)
-FROM Products	
+FROM Products
+
+SELECT ProductName
+FROM Products
+WHERE UnitPrice = 
+(
+	SELECT MAX(UnitPrice)
+	FROM Products
+)	
