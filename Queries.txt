@@ -118,3 +118,13 @@ left join [Order Details]
 on Products.ProductID = [Order Details].ProductID  
 where [Order Details].ProductID is null
 
+//LAB 5
+
+SELECT CategoryName
+FROM Categories 
+WHERE Categories.CategoryID NOT IN
+	(
+	SELECT CategoryID
+	FROM Products
+	WHERE Products.CategoryID is not null
+	)
