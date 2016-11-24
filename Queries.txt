@@ -97,3 +97,24 @@ FROM DaysOfWeek
 FULL JOIN Orders 
 ON DATENAME(DW,OrderDate) = Dzien
 WHERE DATENAME(DW,OrderDate) IS NULL
+
+
+
+select FirstName, LastName 
+from Employees 
+where DATEDIFF(YYYY,HireDate,GETDATE()) > 10 
+and City in ('Boston','Orlean')
+
+select DISTINCT LastName 
+from Employees, Orders, Customers 
+where Orders.EmployeeID = Employees.EmployeeID 
+and Customers.CustomerID = Orders.CustomerID 
+and CompanyName = 'Alfreds Futterkiste' 
+and YEAR(OrderDate) = 1997  
+
+select ProductName, Products.ProductID 
+from Products 
+left join [Order Details] 
+on Products.ProductID = [Order Details].ProductID  
+where [Order Details].ProductID is null
+
