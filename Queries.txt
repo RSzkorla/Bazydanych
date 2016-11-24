@@ -123,8 +123,27 @@ where [Order Details].ProductID is null
 SELECT CategoryName
 FROM Categories 
 WHERE Categories.CategoryID NOT IN
-	(
+(
 	SELECT CategoryID
 	FROM Products
 	WHERE Products.CategoryID is not null
-	)
+)
+	
+SELECT EmployeeID
+FROM Employees
+WHERE EmployeeID NOT IN 
+(
+	SELECT EmployeeID
+	FROM Orders
+)
+
+SELECT CustomerID
+FROM Customers
+WHERE CustomerID NOT IN 
+(
+	SELECT CustomerID
+	FROM Orders
+)
+
+SELECT MAX(UnitPrice)
+FROM Products	
