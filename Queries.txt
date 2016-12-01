@@ -159,3 +159,32 @@ WHERE UnitPrice =
 SELECT TOP 1 ProductName
 FROM Products
 ORDER BY UnitPrice DESC	
+
+
+//LAB6
+SELECT ProductName, UnitPrice, 
+(UnitPrice - 
+	(
+	SELECT AVG(UnitPrice)
+	FROM Products
+	)
+) AS RӯNICA
+FROM Products
+
+
+
+SELECT ProductName, UnitPrice, 
+(UnitPrice / 
+	(
+	SELECT AVG(UnitPrice)
+	FROM Products
+	) *100
+) AS '%'
+FROM Products
+
+SELECT COUNT(LastName)
+FROM Employees
+
+SELECT COUNT(LastName)
+FROM Employees
+WHERE YEAR(HireDate) = 1995
