@@ -203,3 +203,19 @@ FROM Products
 
 SELECT COUNT(*)
 FROM Products
+
+SELECT CategoryID, MAX(UnitPrice)
+FROM Products
+GROUP BY CategoryID
+
+SELECT Products.CategoryID, CategoryName, MAX(UnitPrice)
+FROM Products
+JOIN Categories
+ON Products.CategoryID = Categories.CategoryID
+GROUP BY Products.CategoryID, CategoryName
+
+SELECT Products.CategoryID, COUNT(*)
+FROM Products
+JOIN Categories
+ON Products.CategoryID = Categories.CategoryID
+GROUP BY Products.CategoryID
