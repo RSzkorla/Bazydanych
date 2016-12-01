@@ -200,3 +200,6 @@ CONCAT(
 	),' %'
 ) AS '%'
 FROM Products
+
+SELECT COUNT(*)
+FROM Products
