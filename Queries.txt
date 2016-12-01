@@ -219,3 +219,11 @@ FROM Products
 JOIN Categories
 ON Products.CategoryID = Categories.CategoryID
 GROUP BY Products.CategoryID
+
+SELECT COUNT(EmployeeID) , City
+FROM Employees
+GROUP BY City
+SELECT count(*) AS LICZBA,YEAR(OrderDate) AS ROK, MONTH(OrderDate) AS MIESIAC
+FROM Orders
+GROUP BY YEAR(OrderDate), MONTH(OrderDate)
+ORDER BY YEAR(OrderDate), MONTH(OrderDate)
