@@ -188,3 +188,15 @@ FROM Employees
 SELECT COUNT(LastName)
 FROM Employees
 WHERE YEAR(HireDate) = 1995
+
+SELECT ProductName, UnitPrice, 
+CONCAT(
+	(
+	UnitPrice / 
+		(
+		SELECT AVG(UnitPrice)
+		FROM Products
+		) *100
+	),' %'
+) AS '%'
+FROM Products
