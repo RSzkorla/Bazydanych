@@ -227,3 +227,40 @@ SELECT count(*) AS LICZBA,YEAR(OrderDate) AS ROK, MONTH(OrderDate) AS MIESIAC
 FROM Orders
 GROUP BY YEAR(OrderDate), MONTH(OrderDate)
 ORDER BY YEAR(OrderDate), MONTH(OrderDate)
+
+
+// LAB7
+
+SELECT COUNT(OrderID) AS LICZBA, OrderDate
+FROM Orders
+GROUP BY OrderDate
+ORDER BY OrderDate
+
+SELECT COUNT(OrderID)
+FROM Orders
+WHERE ShipCity = 'Boston'
+
+SELECT COUNT(OrderID) AS LICZBA, ShipCity, MONTH(OrderDate)
+FROM Orders
+GROUP BY ShipCity, YEAR(OrderDate), MONTH(OrderDate)
+ORDER BY ShipCity, MONTH(OrderDate)
+
+SELECT COUNT(OrderID) AS LICZBA
+FROM Orders
+WHERE DATEPART(HOUR,OrderDate) BETWEEN 18 AND 22
+
+SELECT COUNT(OrderID) AS LICZBA, DATEPART(WEEK,OrderDate)
+FROM Orders
+WHERE YEAR(OrderDate) = 1996
+GROUP BY DATEPART(WEEK,OrderDate) 
+
+SELECT COUNT(ProductID),CategoryID
+FROM Products
+GROUP BY CategoryID
+
+SELECT COUNT(ProductID), CategoryName
+FROM Categories
+LEFT JOIN Products
+ON Products.CategoryID = Categories.CategoryID
+GROUP BY Categories.CategoryName
+
