@@ -236,6 +236,11 @@ FROM Orders
 GROUP BY OrderDate
 ORDER BY OrderDate
 
+SELECT COUNT(OrderID) AS LICZBA, OrderDate
+FROM Orders
+GROUP BY YEAR(OrderDate), MONTH(OrderDate), DAY(OrderDate)
+ORDER BY OrderDate
+
 SELECT COUNT(OrderID)
 FROM Orders
 WHERE ShipCity = 'Boston'
@@ -260,7 +265,21 @@ GROUP BY CategoryID
 
 SELECT COUNT(ProductID), CategoryName
 FROM Categories
-LEFT JOIN Products
+FULL JOIN Products
 ON Products.CategoryID = Categories.CategoryID
 GROUP BY Categories.CategoryName
 
+SELECT CategoryID, COUNT(*)
+FROM Products
+WHERE UnitPrice < 100
+GROUP BY CategoryID
+HAVING COUNT(*) > 5
+ORDER BY CategoryID
+
+SELECT CategoryID, COUNT(*)
+FROM Products
+WHERE UnitPrice < 100
+GROUP BY CategoryID
+HAVING COUNT(*) > 5
+	AND CategoryID IN (1,2,3,4,5)
+ORDER BY CategoryID
