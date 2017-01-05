@@ -283,3 +283,65 @@ GROUP BY CategoryID
 HAVING COUNT(*) > 5
 	AND CategoryID IN (1,2,3,4,5)
 ORDER BY CategoryID
+
+SELECT COUNT(*), HireDate
+FROM Employees
+GROUP BY HireDate
+HAVING COUNT(*) >2
+
+SELECT COUNT(*) AS Liczba, 
+	YEAR(OrderDate) AS Y, 
+	MONTH(OrderDate) AS M,
+	DAY(OrderDate) AS D
+FROM Orders
+GROUP BY YEAR(OrderDate), MONTH(OrderDate), DAY(OrderDate)
+HAVING COUNT(*) >30
+ORDER BY COUNT(*)
+
+//LAB 9
+SELECT CustomerID, SUM([Order Details].Quantity*[Order Details].UnitPrice)
+FROM Orders,[Order Details]
+WHERE Orders.OrderID= [Order Details].OrderID
+GROUP BY Orders.CustomerID
+ORDER BY SUM([Order Details].Quantity*[Order Details].UnitPrice) DESC
+
+SELECT Orders.OrderID ,SUM([Order Details].Quantity*[Order Details].UnitPrice)
+FROM Orders,[Order Details]
+WHERE Orders.OrderID= [Order Details].OrderID
+GROUP BY Orders.OrderID
+ORDER BY SUM([Order Details].Quantity*[Order Details].UnitPrice) DESC
+
+SELECT ProductName
+FROM Products
+WHERE UnitPrice = (
+	SELECT MAX(UnitPrice)
+	FROM Products
+	)
+
+SELECT [Order Details].OrderID ,SUM([Order Details].Quantity*[Order Details].UnitPrice)
+FROM [Order Details]
+GROUP BY [Order Details].OrderID
+HAVING SUM([Order Details].Quantity*[Order Details].UnitPrice) >= ALL (
+	SELECT SUM([Order Details].Quantity*[Order Details].UnitPrice)
+	FROM [Order Details]
+	GROUP BY [Order Details].OrderID
+	)
+	
+SELECT [Order Details].OrderID ,SUM([Order Details].Quantity*[Order Details].UnitPrice)
+FROM [Order Details]
+GROUP BY [Order Details].OrderID
+HAVING SUM([Order Details].Quantity*[Order Details].UnitPrice) >= ALL (
+	SELECT TOP 1 SUM([Order Details].Quantity*[Order Details].UnitPrice)
+	FROM [Order Details]
+	GROUP BY [Order Details].OrderID
+	ORDER BY SUM([Order Details].Quantity*[Order Details].UnitPrice) DESC
+	)
+	
+CREATE VIEW WART_ZAM (ID,WARTOSC) AS
+	SELECT Orders.OrderID ,SUM([Order Details].Quantity*[Order Details].UnitPrice)
+	FROM Orders,[Order Details]
+	WHERE Orders.OrderID= [Order Details].OrderID
+	GROUP BY Orders.OrderID
+	
+SELECT *
+FROM WART_ZAM
