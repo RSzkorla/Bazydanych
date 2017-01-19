@@ -368,3 +368,9 @@ WHERE WARTOSC = (
 	)
 	AND Customers.CustomerID = Orders.CustomerID
 	AND WART_ZAM.ID = Orders.OrderID
+	
+	
+//LAB14
+SELECT *
+FROM WART_ZAM
+ORDER BY WARTOSC DESC
