@@ -420,3 +420,24 @@ JOIN [Order Details]
 ON Products.ProductID = [Order Details].ProductID
 GROUP BY ProductName
 
+
+SELECT *
+FROM KLIENT_ZAM 
+JOIN WART_ZAM 
+ON KLIENT_ZAM.ID = WART_ZAM.ID
+
+
+SELECT Categories.CategoryName
+FROM Products
+JOIN Categories
+ON Products.CategoryID = Categories.CategoryID
+WHERE ProductName = 
+(
+	SELECT Produkt
+	FROM SZTUKI
+	WHERE L_Sztuk >= 
+	(
+		SELECT MAX(L_Sztuk)
+		FROM SZTUKI
+	)
+)
