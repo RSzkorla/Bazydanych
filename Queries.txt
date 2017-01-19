@@ -374,3 +374,49 @@ WHERE WARTOSC = (
 SELECT *
 FROM WART_ZAM
 ORDER BY WARTOSC DESC
+
+SELECT ID,WARTOSC,OrderDate
+FROM WART_ZAM, Orders
+WHERE ID = OrderID
+ORDER BY WARTOSC DESC
+
+ALTER VIEW WART_ZAM (ID,WARTOSC,DATA) AS
+	SELECT Orders.OrderID ,SUM([Order Details].Quantity*[Order Details].UnitPrice),OrderDate
+	FROM Orders,[Order Details]
+	WHERE Orders.OrderID= [Order Details].OrderID
+	GROUP BY Orders.OrderID
+	
+	
+SELECT *
+FROM WART_ZAM
+WHERE WARTOSC >=
+	(
+	SELECT MAX(WARTOSC)
+	FROM WART_ZAM
+	)
+	
+SELECT Customers.CompanyName
+FROM WART_ZAM, Customers, Orders
+WHERE WARTOSC >=
+	(
+	SELECT MAX(WARTOSC)
+	FROM WART_ZAM
+	)
+	AND ID= Orders.OrderID
+	AND Orders.CustomerID = Customers.CustomerID
+	
+CREATE VIEW KLIENT_ZAM(Klient,ID,Data)
+AS
+SELECT CompanyName, Orders.OrderID, OrderDate
+FROM Orders
+JOIN Customers
+ON Orders.CustomerID = Customers.CustomerID
+
+CREATE VIEW SZTUKI (Produkt,L_Sztuk)
+AS
+SELECT ProductName, SUM(Quantity)
+FROM Products
+JOIN [Order Details]
+ON Products.ProductID = [Order Details].ProductID
+GROUP BY ProductName
+
